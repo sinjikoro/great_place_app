@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:great_place_app/providers/great_places.dart';
+import 'package:great_place_app/screen/map_screen.dart';
 import 'package:great_place_app/widgets/image_input.dart';
 import 'package:great_place_app/widgets/location_input.dart';
 import 'package:provider/provider.dart';
