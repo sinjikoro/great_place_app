@@ -22,28 +22,30 @@ class PlacesListScreen extends StatelessWidget {
       body: FutureBuilder(
         future: Provider.of<GreatPlaces>(context, listen: false)
             .fetchAndSetPlaces(),
-        builder: (ctx, snapshot) =>
-            snapshot.connectionState == ConnectionState.waiting
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : Consumer<GreatPlaces>(
-                    builder: ((context, greatPlaces, ch) =>
-                        greatPlaces.items.isEmpty
-                            ? ch!
-                            : ListView.builder(
-                                itemCount: greatPlaces.items.length,
-                                itemBuilder: ((context, i) => ListTile(
-                                      leading: CircleAvatar(
-                                        backgroundImage: FileImage(
-                                          greatPlaces.items[i].image,
-                                        ),
-                                      ),
-                                      title: Text(greatPlaces.items[i].title),
-                                    )),
-                              )),
-                    child: const Center(child: Text('not found images.')),
-                  ),
+        builder: (ctx, snapshot) => snapshot.connectionState ==
+                ConnectionState.waiting
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Consumer<GreatPlaces>(
+                builder: ((context, greatPlaces, ch) =>
+                    greatPlaces.items.isEmpty
+                        ? ch!
+                        : ListView.builder(
+                            itemCount: greatPlaces.items.length,
+                            itemBuilder: ((context, i) => ListTile(
+                                  leading: CircleAvatar(
+                                    backgroundImage: FileImage(
+                                      greatPlaces.items[i].image,
+                                    ),
+                                  ),
+                                  title: Text(greatPlaces.items[i].title),
+                                  subtitle:
+                                      Text(greatPlaces.items[i].location.title),
+                                )),
+                          )),
+                child: const Center(child: Text('not found images.')),
+              ),
       ),
     );
   }

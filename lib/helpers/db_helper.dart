@@ -11,7 +11,7 @@ class DBHelper {
       version: 2,
       onCreate: (db, _) async {
         await db.execute(
-            'CREATE TABLE places(id TEXT PRIMARY KEY, title TEXT, image TEXT)');
+            'CREATE TABLE places(id TEXT PRIMARY KEY, title TEXT, image TEXT, loc_lat REAL, loc_lng REAL, address TEXT)');
       },
     );
   }
